@@ -37,10 +37,9 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://n8n.yimo.world/webhook/87bc623c-d3f3-4070-a8ff-6271cd0ba674', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email })
+      const response = await fetch(`https://n8n.yimo.world/webhook/87bc623c-d3f3-4070-a8ff-6271cd0ba674?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
       });
 
       if (!response.ok) {
